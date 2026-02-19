@@ -3,7 +3,7 @@ using {com.learning.smartcontrols as db} from '../db/schema';
 /**
  * Review Service - For SmartTable, SmartFilterBar, SmartForm
  */
-service ReviewService @(path: '/odata/v4/review') {
+service ReviewService @(impl : './serviceImpl')@(path: '/odata/v4/review') {
 
     @cds.redirection.target
     entity Reviews as projection on db.Reviews
@@ -23,7 +23,7 @@ service ReviewService @(path: '/odata/v4/review') {
 /**
  * Goal Service - For Tree Table, Inline Editing, Charts
  */
-service GoalService @(path: '/odata/v4/goal') {
+service GoalService @(impl : './serviceImpl') @(path: '/odata/v4/goal') {
 
     @cds.redirection.target
     entity Goals as projection on db.Goals
@@ -39,4 +39,5 @@ service GoalService @(path: '/odata/v4/goal') {
     @readonly entity Categories as projection on db.Categories;
     @readonly entity Priorities as projection on db.Priorities;
     @readonly entity Statuses as projection on db.Statuses;
-}
+    function getSomthing() returns String;
+} 
